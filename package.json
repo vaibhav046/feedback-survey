@@ -1,0 +1,19 @@
+{
+  "name": "feedback-survey",
+  "version": "1.0.0",
+  "description": "Feedback survey collection application using React Redux and nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vaibhav046/feedback-survey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vaibhav046/feedback-survey/issues"
+  },
+  "homepage": "https://github.com/vaibhav046/feedback-survey#readme"
+}
