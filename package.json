@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/vaibhav046/feedback-survey/issues"
   },
-  "homepage": "https://github.com/vaibhav046/feedback-survey#readme"
+  "homepage": "https://github.com/vaibhav046/feedback-survey#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
