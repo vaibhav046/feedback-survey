@@ -8,7 +8,7 @@ app.use(express.urlencoded({
 }));
 
 app.get('/', (req, res) => {
-    res.send({ hi: 'there' });
+    res.send({ bye: 'there' });
 });
 
 const PORT = process.env.PORT || 5000;
