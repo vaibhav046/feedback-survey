@@ -1,4 +1,3 @@
-
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
@@ -23,13 +22,15 @@ passport.use(new GoogleStrategy({
     clientSecret: GOOGLE_CLIENT_SECRET,
     callbackURL: '/auth/google/callback'
 }, async (accessToken, refreshToken, profile, done) => {
-    let existingUser = await Users.findOne({ googleId: profile.id });
+    let existingUser = await Users.findOne({
+        googleId: profile.id
+    });
     console.log(existingUser);
     if (existingUser) {
         //user is found in the mongo schema.
         done(null, existingUser);
     } else {
-        new Users({
+        await new Users({
             googleId: profile.id
         }).save().then(user => {
             done(null, user);
