@@ -3,13 +3,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config/keys');
 const cookieSessionModule = require('cookie-session');
-const passport = require('passport');
 const Users = require('./models/user');
+const Surveys = require('./models/surveys');
+
+
+const passport = require('passport');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-require('./services/passport');
 
 
 mongoose.connect(config.mongoURI, (err) => {
@@ -24,9 +25,16 @@ app.use(
     })
 );
 
+require('./services/passport');
 app.use(passport.initialize());
 app.use(passport.session());
+
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes').default(app);
+
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, (err) => {

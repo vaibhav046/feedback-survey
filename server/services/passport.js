@@ -20,20 +20,17 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: '/auth/google/callback',
+    proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
     let existingUser = await Users.findOne({
         googleId: profile.id
     });
     console.log(existingUser);
-    if (existingUser) {
-        //user is found in the mongo schema.
-        done(null, existingUser);
-    } else {
-        await new Users({
-            googleId: profile.id
-        }).save().then(user => {
-            done(null, user);
-        });
-    }
+    if (existingUser)
+        return done(null, existingUser);
+    const user = await new Users({
+        googleId: profile.id
+    }).save()
+    done(null, user);
 }));
