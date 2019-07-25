@@ -13,7 +13,7 @@ module.exports = app => {
 
     app.post('/api/surveys/thanks', requireLogin, requireCredits, async (req, res) => {
         const { title, subject, body, recipients } = req.body;
-        console.log(recipients.split(','));
+        // console.log(recipients.split(','));
         const survey = new Surveys({
             title,
             subject,

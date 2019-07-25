@@ -75,7 +75,9 @@ class Mailer {
     async send() {
         let response;
         try {
+            // console.log(this);
             response = await sgMail.send(this, true);
+            // console.log(response);
         } catch (error) {
             console.error(error);
         }
