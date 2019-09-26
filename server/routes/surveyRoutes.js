@@ -4,7 +4,49 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+const elasticsearch = require('elasticsearch');
+const client = new elasticsearch.Client({
+    hosts: ['https://elastic:40WOZAGrwrTsQvnM9BEWWomc@5ac3d3a3dfb44729b4473a3b3dc1b475.ap-sou' +
+        'theast-1.aws.found.io:9243'] //user:password@clusterurl
+});
 
+client.ping({
+    requestTimeout: 30000
+}, function (error) {
+    if (error) {
+        console.error('elasticsearch cluster is down!');
+    } else {
+        console.log('Everything is ok');
+    }
+});
+
+const searchElastic = (title) => {
+
+    return client
+        .search({
+            index: 'surveys',
+            type: 'default',
+            filterPath: ['hits.hits._source'],
+            body: {
+                query: {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "_id": "uocbQG0BnfVJevVfuiDt"
+                                }
+                            },
+                            {
+                                "match": {
+                                    "data.title": `title`
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        });
+}
 module.exports = app => {
 
     app.get('/api/surveys', (req, res) => {
@@ -18,7 +60,9 @@ module.exports = app => {
             title,
             subject,
             body,
-            recipients: recipients.split(',').map(email => ({ email: email })),
+            recipients: recipients
+                .split(',')
+                .map(email => ({ email: email })),
             _user: req.user.id,
             dateSent: Date.now()
         });
@@ -28,12 +72,37 @@ module.exports = app => {
             await mail.send();
             await survey.save();
             req.user.credits -= 10;
-            const user = await req.user.save();
+            const user = await req
+                .user
+                .save();
             return res.send(user);
 
         } catch (err) {
-            return res.status(422).send(err);
+            return res
+                .status(422)
+                .send(err);
         }
 
     });
+
+    app.post('/api/surveys/webhooks', (req, res) => {
+        console.log(req.body);
+        res.send({});
+    });
+    app.get('/api/surveys/:title', async (req, res) => {
+        const mytitle = req.params.title;
+        console.log("title");
+        // const result = await Surveys.findOne({ 'title': mytitle });
+        const result = await searchElastic("title");
+        console.log(result['hits']['hits'][0]._source.data);
+        if (result) {
+            return res
+                .status(200)
+                .send(result);
+        }
+        res
+            .status(404)
+            .send('survey not found.')
+    });
 };
+
