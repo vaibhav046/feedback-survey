@@ -11,6 +11,21 @@ class Search extends Component {
         super(props);
         this.state = { searchValue: "" };
     }
+
+    renderContent(surveys) {
+        return surveys.map((survey, index) => {
+            return (
+                <div key={index}>
+                    <div key={survey['title']}>
+                        <label>{survey['title']}</label>
+                    </div>
+                    <div key={index + `body`}>
+                        {survey['body']}
+                    </div>
+                </div>
+            );
+        });
+    }
     render() {
         return (
             <div className="container ">
@@ -20,15 +35,17 @@ class Search extends Component {
                         <button className="teal btn-flat center white-text" onClick={(evt) => { this.props.searchSurvey(this.props.searchValue.values['search']); evt.preventDefault(); }}>Click me!</button>
                     </form>
                 </div>
-                {/* {this.renderContent()} */}
+                {this.props.searchData ? this.renderContent(this.props.searchData) : null}
             </div >
         );
     }
 };
 
-function mapStateToProps({ form }) {
+function mapStateToProps({ form, surveys }) {
+    debugger;
     return {
-        searchValue: form.searchForm
+        searchValue: form.searchForm,
+        searchData: surveys
     }
 }
 

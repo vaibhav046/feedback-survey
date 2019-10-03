@@ -23,7 +23,7 @@ export const submitSurvey = (values, history) => async dispatch => {
 
 export const searchSurvey = (queryString) => async (dispatch) => {
     console.log(queryString);
-    const res = await axios.get(`/api/surveys/${queryString}`);
+    const res = await axios.get(`/api/surveys/search/${queryString}`);
     dispatch({
         type: FETCH_SURVEY,
         payload: res.data

@@ -6,8 +6,7 @@ const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const elasticsearch = require('elasticsearch');
 const client = new elasticsearch.Client({
-    hosts: ['https://elastic:40WOZAGrwrTsQvnM9BEWWomc@5ac3d3a3dfb44729b4473a3b3dc1b475.ap-sou' +
-        'theast-1.aws.found.io:9243'] //user:password@clusterurl
+    hosts: ['http://localhost:9200'] //user:password@clusterurl//'https://elastic:40WOZAGrwrTsQvnM9BEWWomc@5ac3d3a3dfb44729b4473a3b3dc1b475.ap-sou' +theast-1.aws.found.io:9243'
 });
 
 client.ping({
@@ -26,22 +25,15 @@ const searchElastic = (title) => {
         .search({
             index: 'surveys',
             type: 'default',
-            filterPath: ['hits.hits._source'],
+            filterPath: ['hits.hits'],
             body: {
-                query: {
+                "query": {
                     "bool": {
-                        "must": [
-                            {
-                                "match": {
-                                    "_id": "uocbQG0BnfVJevVfuiDt"
-                                }
-                            },
-                            {
-                                "match": {
-                                    "data.title": `title`
-                                }
+                        "must": {
+                            "term": {
+                                "title.keyword": `${title}`
                             }
-                        ]
+                        }
                     }
                 }
             }
@@ -89,16 +81,18 @@ module.exports = app => {
         console.log(req.body);
         res.send({});
     });
-    app.get('/api/surveys/:title', async (req, res) => {
+    app.get('/api/surveys/search/:title', async (req, res) => {
         const mytitle = req.params.title;
-        console.log("title");
         // const result = await Surveys.findOne({ 'title': mytitle });
-        const result = await searchElastic("title");
-        console.log(result['hits']['hits'][0]._source.data);
-        if (result) {
+        const result = await searchElastic(mytitle);
+        let obj = result.hits.hits.map((x) => {
+            return x._source;
+        })
+        // console.log(result.hits.hits[0]);
+        if (obj) {
             return res
                 .status(200)
-                .send(result);
+                .send(obj);
         }
         res
             .status(404)
