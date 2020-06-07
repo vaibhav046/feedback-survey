@@ -1,0 +1,6 @@
+network.host: _eth0:ipv4_
+cluster.name: docker-test-cluster
+
+discovery.zen.minimum_master_nodes: 2
+discovery.zen.ping.unicast.hosts:
+  - tasks.dev_elasticsearch

@@ -1,0 +1,60 @@
+version: '3.3'
+services:
+  api:
+    image: node:10.15.3-alpine
+    container_name: tqd-node
+    build: .
+    ports:
+      - 5000:5000
+    environment:
+     - NODE_ENV=local
+     - ES_HOST=elasticsearch
+     - NODE_PORT=5000
+     - ELASTIC_URL=http://localhost:9200
+    volumes:
+      -  /usr/src/app/server
+    command: npm run start
+    depends_on:
+        - elasticsearch
+    networks: 
+      - esnet
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
+    environment:
+      - ELASTICSEARCH_HOST:'elasticsearch:9200'
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    deploy:
+      endpoint_mode: dnsrr
+      replicas: 3
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    env_file:
+      - .env
+    logging:
+      driver: none
+    ports:
+      - "0.0.0.0:9000:9000"
+      - 9300:9300
+      - 9200:9200
+    networks: 
+      - esnet
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.2
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    networks:
+      - esnet
+    ports:
+      - 5601:5601
+
+volumes:
+  esdata:
+networks:
+  esnet:

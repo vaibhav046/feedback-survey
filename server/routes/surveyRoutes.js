@@ -6,7 +6,7 @@ const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const elasticsearch = require('elasticsearch');
 const client = new elasticsearch.Client({
-    hosts: ['http://localhost:9200'] //user:password@clusterurl//'https://elastic:40WOZAGrwrTsQvnM9BEWWomc@5ac3d3a3dfb44729b4473a3b3dc1b475.ap-sou' +theast-1.aws.found.io:9243'
+    hosts: process.env.ELASTICSEARCH_HOST //user:password@clusterurl//'https://elastic:40WOZAGrwrTsQvnM9BEWWomc@5ac3d3a3dfb44729b4473a3b3dc1b475.ap-sou' +theast-1.aws.found.io:9243'
 });
 
 client.ping({

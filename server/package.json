@@ -19,6 +19,7 @@
   "author": "vaibhav",
   "license": "ISC",
   "dependencies": {
+    "@elastic/elasticsearch": "^7.4.0",
     "@sendgrid/mail": "^6.4.0",
     "body-parser": "^1.19.0",
     "cookie-session": "^1.3.3",
