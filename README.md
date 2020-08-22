@@ -94,7 +94,7 @@ The application does a google auth strategy single sign on with google+ profile 
 This application does a simple feedback creation with a standard email template. The feedback survey is a survey generation application
 Integrated an sendgrid to send mailers and search local running instance to search based on email title.
 
-Made with :heart: by <a href="https://github.com/vaibhav046" target="_blank">{{YOUR_NAME}}</a>
+Made with :heart: by <a href="https://github.com/vaibhav046" target="_blank">Vaibhav Kumar Goyal</a>
 
 &#xa0;
 
