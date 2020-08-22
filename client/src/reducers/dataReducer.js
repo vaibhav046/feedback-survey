@@ -3,7 +3,6 @@ import { FETCH_SURVEY } from '../actions/types';
 const dataReducer = function (state = null, action) {
     switch (action.type) {
         case FETCH_SURVEY: {
-            debugger;
             return action.payload || false;
         }
         default:

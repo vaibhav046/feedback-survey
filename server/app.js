@@ -13,9 +13,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect(config.mongoURI, (err) => {
+mongoose.connect('mongodb://localhost:27017/emaily-dev', (err) => {
     if (!err)
         console.log('mongo db connected successfully');
+    else
+        console.log(err);
 });
 
 app.use(

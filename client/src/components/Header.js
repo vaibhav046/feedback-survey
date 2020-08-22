@@ -6,6 +6,7 @@ import Payments from './Payments';
 
 class Header extends Component {
 
+
     renderContent() {
         switch (this.props.auth) {
             case null: return;
@@ -13,10 +14,16 @@ class Header extends Component {
                 <li><a href="/auth/google">Login with google</a></li>
             );
             default: return [
+                <li key="surveys"><Link to={this.props.auth ? '/surveys/new' : '/'}><button className="btn-flat" >
+                    Create Surveys </button></Link></li>,
                 <li key="payment"><Payments /></li>,
                 <li key="credits" style={{ margin: '0 10px' }}>Credits:{this.props.auth.credits}</li>,
                 <li key="logout"> <a href="/api/logout">Logout</a> </li>];
         }
+    }
+
+    routehandler() {
+        this.props.history.push('/surveys/new');
     }
 
     render() {
@@ -30,7 +37,7 @@ class Header extends Component {
                         {this.renderContent()}
                     </ul>
                 </div>
-            </nav>
+            </nav >
         );
     }
 }
@@ -39,4 +46,4 @@ function mapStatesToProp({ auth }) {
     return { auth }
 }
 
-export default connect(mapStatesToProp, null)(Header)
+export default connect(mapStatesToProp, null)(Header);

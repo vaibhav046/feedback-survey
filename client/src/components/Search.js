@@ -42,7 +42,6 @@ class Search extends Component {
 };
 
 function mapStateToProps({ form, surveys }) {
-    debugger;
     return {
         searchValue: form.searchForm,
         searchData: surveys
