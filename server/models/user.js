@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+/**
+ *  User schema. 
+ */
 var userSchema = new Schema({
     googleId: String,
     credits: {

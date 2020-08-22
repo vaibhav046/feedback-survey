@@ -1,4 +1,10 @@
 const passport = require('passport');
+
+/**
+ * Auth route handler.
+ * Contracts [Auth:{'/auth/google','/auth/google/callback},Current User:'/api/currentUser',Logout:'/api/logout']
+ * @param {*} app 
+ */
 module.exports = (app) => {
     app.get('/', (req, res) => {
         res.redirect('/auth/google');

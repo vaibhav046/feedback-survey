@@ -39,6 +39,12 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 //             }
 //         });
 // }
+
+/**
+ * Route handler for Surveys.
+ * Contracts [Voting Survey:'/api/surveys', Acknowledge Survey:'/api/surveys/thanks',Search Survey:'/api/surveys/search/:title']
+ * @param {*} app 
+ */
 module.exports = app => {
 
     app.get('/api/surveys', (req, res) => {
@@ -79,13 +85,14 @@ module.exports = app => {
 
     app.post('/api/surveys/webhooks', (req, res) => {
         console.log(req.body);
+        /*TODO: stub for webhooks*/
         res.send({});
     });
+
     app.get('/api/surveys/search/:title', async (req, res) => {
         const mytitle = req.params.title;
         const result = await Surveys.findOne({ 'title': mytitle });
-        console.log(result);
-        // const result = await searchElastic(mytitle);
+        // const result = await searchElastic(mytitle)
         // let obj = result.hits.hits.map((x) => {
         //     return x._source;
         // })

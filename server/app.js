@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,14 +8,13 @@ const cookieSessionModule = require('cookie-session');
 const Users = require('./models/user');
 const Surveys = require('./models/surveys');
 
-
 const passport = require('passport');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect('mongodb://localhost:27017/emaily-dev', (err) => {
+mongoose.connect(config.mongoURI, (err) => {
     if (!err)
         console.log('mongo db connected successfully');
     else

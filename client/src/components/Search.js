@@ -13,7 +13,8 @@ class Search extends Component {
     }
 
     renderContent(surveys) {
-        return surveys.map((survey, index) => {
+        let localsurvey = new Array(surveys);
+        return localsurvey.map((survey, index) => {
             return (
                 <div key={index}>
                     <div key={survey['title']}>

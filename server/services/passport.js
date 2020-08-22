@@ -8,6 +8,9 @@ const GOOGLE_CLIENT_SECRET = keys.clientSecret;
 
 const Users = mongoose.model('users');
 
+/*
+* passport middleware.
+*/
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });

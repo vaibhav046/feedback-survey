@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+/**
+ * Recipeients Collections.
+ */
 var RecipientsSchema = new Schema({
     email: String,
     responded: {

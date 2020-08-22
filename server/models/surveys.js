@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const RecipientsSchema = require('./Recipients');
 
+/**
+ * Surveys Schema.
+ */
 var surveySchema = new Schema({
     title: String,
     subject: String,
