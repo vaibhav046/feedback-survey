@@ -46,7 +46,12 @@
 
 ## :dart: About ##
 
-Describe your project
+# feedback-survey
+Feedback survey collection application using React Redux and nodejs.
+
+The application does a google auth strategy single sign on with google+ profile active users with gmail account.
+This application does a simple feedback creation with a standard email template. The feedback survey is a survey generation application
+Integrated an sendgrid to send mailers and search local running instance to search based on email title.
 
 ## :sparkles: Features ##
 
@@ -84,15 +89,6 @@ $ cd server && npm start
 
 # The server will initialize in the <http://localhost:3000>
 ```
-
-## :memo: License ##
-
-# feedback-survey
-Feedback survey collection application using React Redux and nodejs.
-
-The application does a google auth strategy single sign on with google+ profile active users with gmail account.
-This application does a simple feedback creation with a standard email template. The feedback survey is a survey generation application
-Integrated an sendgrid to send mailers and search local running instance to search based on email title.
 
 Made with :heart: by <a href="https://github.com/vaibhav046" target="_blank">Vaibhav Kumar Goyal</a>
 
