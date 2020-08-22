@@ -55,9 +55,9 @@ Integrated an sendgrid to send mailers and search local running instance to sear
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
+:heavy_check_mark: Google Auth;\
+:heavy_check_mark: Survey Creator Template;\
+:heavy_check_mark: Email Sender Template;
 
 ## :rocket: Technologies ##
 
