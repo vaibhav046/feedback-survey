@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth reducer should handle FETCH_USER 1`] = `
+Object {
+  "auth": Object {},
+  "loaded": false,
+}
+`;
+
+exports[`Auth reducer should return the initial state 1`] = `null`;

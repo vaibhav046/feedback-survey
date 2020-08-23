@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Data reducer should handle FETCH_SURVEY 1`] = `
+Object {
+  "loaded": false,
+  "surveys": Object {},
+}
+`;
+
+exports[`Data reducer should return the initial state 1`] = `null`;
