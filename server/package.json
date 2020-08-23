@@ -10,7 +10,8 @@
   "scripts": {
     "start": "nodemon app.js",
     "dev": "nodemon app.js",
-    "webhook": "lt -p 5000 -s emailyyyyyy"
+    "webhook": "lt -p 5000 -s emailyyyyyy",
+    "test": "mocha 'test/**/*.js' --recursive"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,11 @@
     "sendgrid": "^5.2.3",
     "stripe": "^7.4.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.1.1",
+    "nock": "^13.0.4",
+    "supertest": "^4.0.2"
+  }
 }

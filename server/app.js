@@ -46,3 +46,6 @@ app.listen(PORT, (err) => {
     else
         console.info('server running');
 });
+
+
+module.exports = app;
