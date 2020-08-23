@@ -7,7 +7,7 @@ import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './Surveys/SurveyNew';
 
-class App extends Component {
+export class App extends Component {
 
     componentDidMount() {
         this.props.fetchUser();

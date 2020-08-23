@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Landing = ({ loggedInUser }) => {
+export const Landing = ({ loggedInUser }) => {
 
     return (
         <div style={{ textAlign: 'center' }}>

@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component renders Header component correctly 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "zut9l3",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "zut9l3",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <Provider
+      store={
+        Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        }
+      }
+    >
+      <Header
+        auth={
+          Object {
+            "credits": 500,
+            "googleId": "1021201020102",
+          }
+        }
+      >
+        <nav>
+          <div
+            className="nav-wrapper"
+          >
+            <Link
+              className="brand-logo"
+              to="/surveys"
+            >
+              <LinkAnchor
+                className="brand-logo"
+                href="/surveys"
+                navigate={[Function]}
+              >
+                <a
+                  className="brand-logo"
+                  href="/surveys"
+                  onClick={[Function]}
+                >
+                  Emaily
+                </a>
+              </LinkAnchor>
+            </Link>
+            <ul
+              className="right hide-on-med-and-down"
+              id="nav-mobile"
+            >
+              <li
+                key="surveys"
+              >
+                <Link
+                  to="/surveys/new"
+                >
+                  <LinkAnchor
+                    href="/surveys/new"
+                    navigate={[Function]}
+                  >
+                    <a
+                      href="/surveys/new"
+                      onClick={[Function]}
+                    >
+                      <button
+                        className="btn-flat"
+                      >
+                        Create Surveys 
+                      </button>
+                    </a>
+                  </LinkAnchor>
+                </Link>
+              </li>
+              <li
+                key="payment"
+              >
+                <Connect(Payments)>
+                  <Payments
+                    fetchUser={[Function]}
+                    handleToken={[Function]}
+                    searchSurvey={[Function]}
+                    submitSurvey={[Function]}
+                  >
+                    <ReactStripeCheckout
+                      ComponentClass="span"
+                      amount={5000}
+                      className="StripeCheckout"
+                      description="$50 for 50 email credits"
+                      label="Pay With Card"
+                      locale="auto"
+                      name="Emaily"
+                      reconfigureOnUpdate={false}
+                      stripeKey="test_key"
+                      token={[Function]}
+                      triggerEvent="onClick"
+                    >
+                      <span
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="btn-flat"
+                        >
+                          Add Credits
+                        </button>
+                      </span>
+                    </ReactStripeCheckout>
+                  </Payments>
+                </Connect(Payments)>
+              </li>
+              <li
+                key="credits"
+                style={
+                  Object {
+                    "margin": "0 10px",
+                  }
+                }
+              >
+                Credits:
+                500
+              </li>
+              <li
+                key="logout"
+              >
+                 
+                <a
+                  href="/api/logout"
+                >
+                  Logout
+                </a>
+                 
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </Header>
+    </Provider>
+  </Router>
+</MemoryRouter>
+`;

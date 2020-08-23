@@ -5,7 +5,7 @@ import SurveyField from './Surveys/SurveyField';
 import * as actions from '../actions/index';
 
 
-class Search extends Component {
+export class Search extends Component {
     state = { searchValue: "" };
     constructor(props) {
         super(props);
@@ -33,7 +33,7 @@ class Search extends Component {
                 <div className="space-space-top1 parallax">
                     <form >
                         <Field component={SurveyField} type="text" label="SEARCH" name="search" key="search" />
-                        <button className="teal btn-flat center white-text" onClick={(evt) => { this.props.searchSurvey(this.props.searchValue.values['search']); evt.preventDefault(); }}>Click me!</button>
+                        <button className="teal btn-flat center white-text" onClick={(evt) => { this.props.searchSurvey(this.props.searchValue.values['search']); evt.preventDefault(); }}>Search</button>
                     </form>
                 </div>
                 {this.props.searchData ? this.renderContent(this.props.searchData) : null}

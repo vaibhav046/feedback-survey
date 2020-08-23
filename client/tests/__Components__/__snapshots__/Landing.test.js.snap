@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing Component renders Landing component correctly 1`] = `
+<Component>
+  <div
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <h1>
+      Emaily
+    </h1>
+    <h5>
+      Please login to continue
+    </h5>
+    <p>
+      Come here to collect Feedback!
+    </p>
+  </div>
+</Component>
+`;
